@@ -4,9 +4,9 @@ const mongoose = require("mongoose");
 const Listing = require("./models/listing.js");
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 const path = require("path");
-app.set("view engine","ejs");
-app.set("views", path.join(__dirname,"views"));
-app.use(express.urlencoded({extended:true}))
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+app.use(express.urlencoded({ extended: true }));
 
 main()
   .then(() => {
@@ -40,22 +40,19 @@ app.get("/testListing", async (req, res) => {
 
 //Index Route
 app.get("/listings", async (req, res) => {
-  const allListings = await Listing.find({})
-  res.render("listings/index.ejs",{allListings});
+  const allListings = await Listing.find({});
+  res.render("listings/index.ejs", { allListings });
 });
 
 //Show route
-app.get("/listings/:id",async (req, res)=> {
-  let {id} = req.params;
+app.get("/listings/:id", async (req, res) => {
+  let { id } = req.params;
   const listing = await Listing.findById(id);
-  res.render("listings/show.ejs",{listing})
-})
+  res.render("listings/show.ejs", { listing });
+});
 
 //New route
-app.get("/listings/new",(req,res)=>{
-  
-})
-
+app.get("/listings/new", (req, res) => {});
 
 app.listen(8080, () => {
   console.log("Server is listening to port 8080");
