@@ -44,6 +44,11 @@ app.get("/listings", async (req, res) => {
   res.render("listings/index.ejs", { allListings });
 });
 
+//New route
+app.get("/listings/new", (req, res) => {
+  res.render("listings/new.ejs");
+});
+
 //Show route
 app.get("/listings/:id", async (req, res) => {
   let { id } = req.params;
@@ -51,9 +56,13 @@ app.get("/listings/:id", async (req, res) => {
   res.render("listings/show.ejs", { listing });
 });
 
-//New route
-app.get("/listings/new", (req, res) => {});
-
-app.listen(8080, () => {
-  console.log("Server is listening to port 8080");
+//Create Route
+app.post("/listings", async (req, res) => {
+  // let {title,description , image, price, country , language}
+  const newListing = new Listing(req.body.listing);
+  await newListing.save();
+  res.redirect("/listings");
 });
+
+app.listen(8080, () => {});
+console.log("Server is listening to port 8080");
