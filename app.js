@@ -64,5 +64,10 @@ app.post("/listings", async (req, res) => {
   res.redirect("/listings");
 });
 
-app.listen(8080, () => {});
+
+app.post("/listings/:id", async (req, res) => {
+  let { id } = req.params
+  const listing = new Listing(req.body.listing)
+})
+app.listen(8080, () => { });
 console.log("Server is listening to port 8080");
