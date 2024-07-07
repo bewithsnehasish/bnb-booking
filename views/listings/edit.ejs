@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <title>Edit Your Listing</title>
+
+  <body>
+    <form method="post" action="/listings">
+      <label for="title">Enter the Hotel Title</label>
+      <input type="text" name="listing[title]" value="<%= listing.title %>" placeholder="Enter the Title">
+      <br>
+      <label for="description">Please enter the Description</label>
+      <input type="textarea" name="listing[description]" placeholder="Edit the Description"
+        value="<%=listing.description%>">
+      <br>
+      <label for="image">Enter the Image Link</label>
+      <input type="text" name="listing[image]" placeholder="Input Picture Link" value="<%=listing.image%>">
+      <br>
+      <label for="price">Enter the Price of the Hotel</label>
+      <input type="number" name="listing[price]" placeholder="Enter the Price" value="<%=listing.price%>">
+      <br>
+      <label for="country">Enter the Country</label>
+      <input type="text" name="listing[country]" placeholder="Eneter Country Name" value="<%=listing.country%>">
+      <br>
+      <label for="location">Enter the Location</label>
+      <input type="text" name="listing[location]" placeholder="Enter Location" value="<%=listing.location%>">
+      <br>
+      <button type="submit">Add</button>
+    </form>
+  </body>
+</body>
+
+</html>

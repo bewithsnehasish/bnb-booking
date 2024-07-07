@@ -64,10 +64,14 @@ app.post("/listings", async (req, res) => {
   res.redirect("/listings");
 });
 
-
-app.post("/listings/:id", async (req, res) => {
-  let { id } = req.params
-  const listing = new Listing(req.body.listing)
+//Edit Route
+app.get("/listings/:id/edit", async (req, res) => {
+  let { id } = req.params;
+  const listing = await Listing.findById(id)
+  res.render("listings/edit.ejs", { listing })
 })
+
+
+
 app.listen(8080, () => { });
 console.log("Server is listening to port 8080");
